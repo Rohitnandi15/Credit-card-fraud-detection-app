@@ -148,6 +148,7 @@ button:hover {
 
 body.dark-mode {
     background-color: #121212;
+    background-image: none;
    
 }
 body.dark-mode .container {
