@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='fevicon.png') }}" type="image/png">
+
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="container">
+           
+            <h1>Credit Card Fraud Detector</h1>
+            <form method="POST" action="/predict">
+                <div class="form-group">
+                    <label for="Time">Transaction Time</label>
+                    <input type="number" step="any" name="Time" id="Time" placeholder="Enter Time" required>
+                </div>
+                <div class="form-group">
+                    <label for="V1">V1</label>
+                    <input type="number" step="any" name="V1" id="V1" placeholder="Enter V1" required>
+                </div>
+                <div class="form-group">
+                    <label for="V2">V2</label>
+                    <input type="number" step="any" name="V2" id="V2" placeholder="Enter V2" required>
+                </div>
+                <div class="form-group">
+                    <label for="V3">V3</label>
+                    <input type="number" step="any" name="V3" id="V3" placeholder="Enter V3" required>
+                </div>
+                <div class="form-group">
+                    <label for="V4">V4</label>
+                    <input type="number" step="any"name="V4" id="V4" placeholder="Enter V4" required>
+                </div>
+                <div class="form-group">
+                    <label for="V5">V5</label>
+                    <input type="number" step="any" name="V5" id="V5" placeholder="Enter V5" required>
+                </div>
+                <div class="form-group">
+                    <label for="Amount">Transaction Amount</label>
+                    <input type="number" step="any"name="Amount" id="Amount" placeholder="Enter Amount" required>
+                </div>
+                <button type="submit">Check Transaction</button>
+            </form>
+
+            {% if prediction_text %}
+            <div class="result {{ 'fraud' if 'fraud' in prediction_text else 'not-fraud' }}">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+        
+        </div>
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+</body>
+
+</html>
